@@ -37,7 +37,7 @@ const state = {
       text: "今天根系颜色保持乳白，低流量循环后气泡附着明显减少。EC 先不继续上调。",
       likes: 28,
       comments: 6,
-      image: "./assets/plan_p28_img6.jpg",
+      image: "./assets/floramind-device-3d-detail.png",
       liked: false
     },
     {
@@ -477,7 +477,7 @@ function publishPost() {
     text,
     likes: 0,
     comments: 0,
-    image: "./assets/plan_p30_img6.jpg",
+    image: "./assets/floramind-device-3d-hero.png",
     liked: false
   });
   input.value = "";

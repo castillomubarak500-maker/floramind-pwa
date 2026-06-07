@@ -1,16 +1,15 @@
-const CACHE_NAME = "floramind-v1c-light-glass";
+const CACHE_NAME = "floramind-v1e-generated-device";
 const ASSETS = [
   "./",
   "./index.html",
   "./styles.css",
-  "./styles.css?v=light-glass-20260607",
+  "./styles.css?v=generated-device-20260607b",
   "./app.js",
-  "./app.js?v=light-glass-20260607",
+  "./app.js?v=generated-device-20260607b",
   "./manifest.json",
   "./vendor/lucide.min.js",
-  "./assets/plan_p28_img6.jpg",
-  "./assets/plan_p29_img6.jpg",
-  "./assets/plan_p30_img6.jpg",
+  "./assets/floramind-device-3d-hero.png",
+  "./assets/floramind-device-3d-detail.png",
   "./assets/floramind-icon-192.png",
   "./assets/floramind-icon-512.png"
 ];
