@@ -1,0 +1,293 @@
+<!doctype html>
+<html lang="zh-CN">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0, viewport-fit=cover">
+  <meta name="theme-color" content="#f7fbfa">
+  <meta name="apple-mobile-web-app-capable" content="yes">
+  <meta name="apple-mobile-web-app-status-bar-style" content="default">
+  <meta name="apple-mobile-web-app-title" content="FloraMind">
+  <title>FloraMind 木本水培智能养护</title>
+  <link rel="manifest" href="./manifest.json">
+  <link rel="apple-touch-icon" href="./assets/floramind-icon-192.png">
+  <link rel="stylesheet" href="./styles.css?v=light-glass-20260607">
+  <script src="./vendor/lucide.min.js" defer></script>
+</head>
+<body>
+  <div class="app-shell">
+    <aside class="desktop-context" aria-hidden="true">
+      <div class="brand-lockup">
+        <div class="brand-mark">F</div>
+        <div>
+          <h1>FloraMind</h1>
+          <p>木本植物智能水培系统</p>
+        </div>
+      </div>
+      <div class="context-card">
+        <img src="./assets/plan_p29_img6.jpg" alt="维生基座结构图">
+        <div>
+          <strong>维生基座 V1.0</strong>
+          <span>共生体 + 智能硬件 + 数字服务</span>
+        </div>
+      </div>
+      <div class="context-grid">
+        <span>AI 诊断</span>
+        <span>远程控制</span>
+        <span>生长档案</span>
+        <span>社区互动</span>
+      </div>
+    </aside>
+
+    <main class="phone" aria-label="FloraMind 移动端应用">
+      <header class="topbar">
+        <button class="icon-button" id="bindDeviceBtn" aria-label="绑定设备">
+          <i data-lucide="scan-line"></i>
+        </button>
+        <div>
+          <div class="eyebrow">FloraMind</div>
+          <h2 id="screenTitle">实时监测</h2>
+        </div>
+        <button class="icon-button" id="notificationBtn" aria-label="查看告警">
+          <i data-lucide="bell"></i>
+          <span class="alert-dot" id="alertDot"></span>
+        </button>
+      </header>
+
+      <section class="screen active" data-screen="dashboard" aria-label="实时监测">
+        <div class="hero-panel">
+          <div class="hero-copy">
+            <span class="status-pill online"><i data-lucide="wifi"></i><span id="deviceStatus">在线</span></span>
+            <h3>微型月季共生体</h3>
+            <p id="healthNarrative">根区环境稳定，建议继续保持低流量循环。</p>
+            <div class="hero-actions">
+              <button class="primary-action" data-action="quickCare"><i data-lucide="sparkles"></i>一键养护</button>
+              <button class="secondary-action" data-nav="diagnosis"><i data-lucide="camera"></i>AI 诊断</button>
+            </div>
+          </div>
+          <div class="plant-card">
+            <img src="./assets/plan_p29_img6.jpg" alt="维生基座设备与木本共生体">
+            <div class="growth-score">
+              <strong id="growthScore">92</strong>
+              <span>生命力</span>
+            </div>
+          </div>
+        </div>
+
+        <div class="metric-grid" id="metricGrid"></div>
+
+        <div class="panel compact-alert" id="alertPanel">
+          <div>
+            <span class="panel-kicker">本地联锁</span>
+            <h3 id="alertTitle">暂无紧急告警</h3>
+            <p id="alertText">低液位、漏液和无流量保护均正常。</p>
+          </div>
+          <button class="text-button" data-nav="control">处理</button>
+        </div>
+
+        <div class="panel">
+          <div class="section-head">
+            <div>
+              <span class="panel-kicker">24 h 趋势</span>
+              <h3>根区关键指标</h3>
+            </div>
+            <div class="segmented" data-chart-tabs>
+              <button class="selected" data-chart="ph">pH</button>
+              <button data-chart="ec">EC</button>
+              <button data-chart="do">DO</button>
+            </div>
+          </div>
+          <canvas id="trendChart" width="680" height="260" aria-label="根区趋势图"></canvas>
+        </div>
+
+        <div class="panel">
+          <div class="section-head">
+            <div>
+              <span class="panel-kicker">今日养护</span>
+              <h3>自动计划</h3>
+            </div>
+            <span class="small-tag">12-14 h 光周期</span>
+          </div>
+          <div class="task-list" id="todayTasks"></div>
+        </div>
+      </section>
+
+      <section class="screen" data-screen="control" aria-label="设备控制">
+        <div class="panel device-panel">
+          <div class="device-visual">
+            <img src="./assets/plan_p30_img6.jpg" alt="维生基座传感器与泵路结构">
+          </div>
+          <div>
+            <span class="panel-kicker">远程操控</span>
+            <h3>维生基座 C-01</h3>
+            <p>ESP32-S3 已连接，最近同步 <span id="lastSync">刚刚</span>。</p>
+          </div>
+        </div>
+
+        <div class="control-stack" id="controlStack"></div>
+
+        <div class="panel">
+          <div class="section-head">
+            <div>
+              <span class="panel-kicker">补光策略</span>
+              <h3>光谱与光周期</h3>
+            </div>
+            <span class="small-tag" id="lightModeTag">营养生长</span>
+          </div>
+          <div class="range-row">
+            <label for="whiteRange">白光</label>
+            <input id="whiteRange" type="range" min="0" max="100" value="72">
+            <output id="whiteOutput">72%</output>
+          </div>
+          <div class="range-row">
+            <label for="redBlueRange">红蓝辅助</label>
+            <input id="redBlueRange" type="range" min="0" max="100" value="48">
+            <output id="redBlueOutput">48%</output>
+          </div>
+          <div class="schedule-card">
+            <i data-lucide="sun-medium"></i>
+            <div>
+              <strong>07:30 - 20:30</strong>
+              <span>环境光充足时自动降功率，水温高于 28℃时优先降热负荷。</span>
+            </div>
+          </div>
+        </div>
+
+        <div class="panel">
+          <div class="section-head">
+            <div>
+              <span class="panel-kicker">耗材智能预警</span>
+              <h3>营养液与维护</h3>
+            </div>
+            <button class="text-button" data-action="mockOrder">一键补给</button>
+          </div>
+          <div class="supply-list" id="supplyList"></div>
+        </div>
+
+        <div class="panel calibration">
+          <div>
+            <span class="panel-kicker">校准记录</span>
+            <h3>传感器可信度</h3>
+          </div>
+          <div class="calibration-grid">
+            <button data-action="calibrate" data-sensor="pH"><i data-lucide="activity"></i>pH 两点校准</button>
+            <button data-action="calibrate" data-sensor="EC"><i data-lucide="waves"></i>EC 标准液</button>
+            <button data-action="calibrate" data-sensor="DO"><i data-lucide="droplets"></i>DO 空气校准</button>
+          </div>
+        </div>
+      </section>
+
+      <section class="screen" data-screen="archive" aria-label="生长档案">
+        <div class="panel archive-hero">
+          <div>
+            <span class="panel-kicker">第 38 天</span>
+            <h3>新根诱导进入稳定期</h3>
+            <p>本周白色新根增加，叶色稳定。EC 已从 1.2 提升到 1.4 mS/cm。</p>
+          </div>
+          <div class="ring-stat">
+            <strong>76%</strong>
+            <span>阶段进度</span>
+          </div>
+        </div>
+
+        <div class="panel">
+          <div class="section-head">
+            <div>
+              <span class="panel-kicker">成长曲线</span>
+              <h3>株高与新根长度</h3>
+            </div>
+            <button class="text-button" data-action="addRecord">记录</button>
+          </div>
+          <canvas id="growthChart" width="680" height="250" aria-label="生长曲线"></canvas>
+        </div>
+
+        <div class="panel">
+          <div class="section-head">
+            <div>
+              <span class="panel-kicker">实验日志</span>
+              <h3>可核查记录</h3>
+            </div>
+            <span class="small-tag">8-12 周观察</span>
+          </div>
+          <div class="timeline" id="timeline"></div>
+        </div>
+      </section>
+
+      <section class="screen" data-screen="diagnosis" aria-label="AI 诊断">
+        <div class="panel diagnosis-card">
+          <div>
+            <span class="panel-kicker">AI 病虫害诊断</span>
+            <h3>拍照或选择症状</h3>
+            <p>当前为演示诊断模型，正式版需接入真实训练数据与人工复核流程。</p>
+          </div>
+          <label class="upload-box" for="plantPhoto">
+            <input id="plantPhoto" type="file" accept="image/*">
+            <img id="photoPreview" src="./assets/plan_p28_img6.jpg" alt="植物诊断预览图">
+            <span><i data-lucide="camera"></i>更换照片</span>
+          </label>
+        </div>
+
+        <div class="panel">
+          <div class="section-head">
+            <div>
+              <span class="panel-kicker">症状选择</span>
+              <h3>根系与叶片</h3>
+            </div>
+            <button class="text-button" data-action="runDiagnosis">开始分析</button>
+          </div>
+          <div class="chip-cloud" id="symptomChips"></div>
+        </div>
+
+        <div class="panel result-panel" id="diagnosisResult">
+          <div class="result-head">
+            <div>
+              <span class="panel-kicker">诊断结果</span>
+              <h3>根区低氧风险</h3>
+            </div>
+            <strong>86%</strong>
+          </div>
+          <p>DO 近期低于 6 mg/L 且水温偏高，建议先增强增氧、降低补光热负荷，并复查气石堵塞情况。</p>
+          <div class="action-plan">
+            <button data-action="applyDiagnosis"><i data-lucide="fan"></i>开启强制增氧</button>
+            <button data-action="saveDiagnosis"><i data-lucide="file-check-2"></i>加入档案</button>
+          </div>
+        </div>
+      </section>
+
+      <section class="screen" data-screen="community" aria-label="社区互动">
+        <div class="composer panel">
+          <div class="avatar">惜</div>
+          <div class="composer-input">
+            <textarea id="postInput" rows="2" placeholder="记录今天的根系变化、花苞状态或养护心得"></textarea>
+            <div class="composer-actions">
+              <button class="secondary-action" data-action="attachGrowth"><i data-lucide="chart-line"></i>附带数据</button>
+              <button class="primary-action" data-action="publishPost"><i data-lucide="send"></i>发布</button>
+            </div>
+          </div>
+        </div>
+
+        <div class="feed" id="feed"></div>
+      </section>
+
+      <nav class="bottom-nav" aria-label="主导航">
+        <button class="active" data-nav="dashboard"><i data-lucide="gauge"></i><span>监测</span></button>
+        <button data-nav="control"><i data-lucide="sliders-horizontal"></i><span>控制</span></button>
+        <button data-nav="archive"><i data-lucide="sprout"></i><span>档案</span></button>
+        <button data-nav="diagnosis"><i data-lucide="scan-search"></i><span>诊断</span></button>
+        <button data-nav="community"><i data-lucide="message-circle"></i><span>社区</span></button>
+      </nav>
+    </main>
+  </div>
+
+  <dialog id="modal">
+    <div class="modal-card">
+      <button class="icon-button modal-close" id="modalClose" aria-label="关闭">
+        <i data-lucide="x"></i>
+      </button>
+      <div id="modalContent"></div>
+    </div>
+  </dialog>
+
+  <div class="toast" id="toast" role="status"></div>
+  <script src="./app.js?v=light-glass-20260607"></script>
+</body>
+</html>
