@@ -53,6 +53,8 @@ const state = {
   ]
 };
 
+const screenOrder = ["dashboard", "control", "archive", "diagnosis", "community"];
+
 const metricConfig = [
   { key: "ph", label: "pH", unit: "", icon: "activity", range: [5.5, 6.0], warn: [5.2, 6.5], decimals: 2 },
   { key: "ec", label: "EC", unit: "mS/cm", icon: "waves", range: [1.2, 1.8], warn: [0.9, 2.5], decimals: 2 },
@@ -327,6 +329,15 @@ function createIcons() {
   if (window.lucide) window.lucide.createIcons();
 }
 
+function updateNavState(screen) {
+  $$(".bottom-nav button").forEach((btn) => {
+    const active = btn.dataset.nav === screen;
+    btn.classList.toggle("active", active);
+    if (active) btn.setAttribute("aria-current", "page");
+    else btn.removeAttribute("aria-current");
+  });
+}
+
 function renderAll() {
   renderMetrics();
   renderTasks();
@@ -341,12 +352,72 @@ function renderAll() {
 }
 
 function navigate(screen) {
+  if (!screen || screen === state.screen) {
+    updateNavState(state.screen);
+    return;
+  }
+
+  const previous = state.screen;
+  const previousIndex = screenOrder.indexOf(previous);
+  const nextIndex = screenOrder.indexOf(screen);
+  const movingForward = nextIndex >= previousIndex;
+  const enterClass = movingForward ? "enter-forward" : "enter-back";
+  const exitClass = movingForward ? "exit-forward" : "exit-back";
+
   state.screen = screen;
-  $$(".screen").forEach(el => el.classList.toggle("active", el.dataset.screen === screen));
-  $$(".bottom-nav button").forEach(btn => btn.classList.toggle("active", btn.dataset.nav === screen));
+  $$(".screen").forEach((el) => {
+    const isPrevious = el.dataset.screen === previous;
+    const isNext = el.dataset.screen === screen;
+    el.classList.remove("active", "enter-forward", "enter-back", "exit-forward", "exit-back");
+
+    if (isPrevious) {
+      el.classList.add(exitClass);
+      setTimeout(() => el.classList.remove(exitClass), 320);
+    }
+
+    if (isNext) {
+      el.classList.add("active", enterClass);
+      el.scrollTop = 0;
+      setTimeout(() => el.classList.remove(enterClass), 360);
+    }
+  });
+  updateNavState(screen);
   const titles = { dashboard: "实时监测", control: "设备控制", archive: "生长档案", diagnosis: "AI 诊断", community: "社区互动" };
   $("#screenTitle").textContent = titles[screen];
   setTimeout(renderCharts, 60);
+}
+
+function addTapFeedback(event) {
+  const surface = event.target.closest("button, .chip, .upload-box");
+  if (!surface || surface.disabled || surface.classList.contains("no-ripple")) return;
+  if (surface.querySelector(".tap-ripple")) surface.querySelector(".tap-ripple").remove();
+
+  surface.classList.remove("is-pressing");
+  void surface.offsetWidth;
+  surface.classList.add("is-pressing");
+  setTimeout(() => surface.classList.remove("is-pressing"), 180);
+
+  const rect = surface.getBoundingClientRect();
+  const size = Math.max(rect.width, rect.height);
+  const clientX = event.clientX || rect.left + rect.width / 2;
+  const clientY = event.clientY || rect.top + rect.height / 2;
+  const ripple = document.createElement("span");
+  ripple.className = "tap-ripple";
+  ripple.style.width = `${size}px`;
+  ripple.style.height = `${size}px`;
+  ripple.style.left = `${clientX - rect.left - size / 2}px`;
+  ripple.style.top = `${clientY - rect.top - size / 2}px`;
+  surface.appendChild(ripple);
+  ripple.addEventListener("animationend", () => ripple.remove(), { once: true });
+  setTimeout(() => ripple.remove(), 560);
+}
+
+function syncRangeFill(input) {
+  const min = Number(input.min || 0);
+  const max = Number(input.max || 100);
+  const value = Number(input.value || 0);
+  const pct = ((value - min) / (max - min || 1)) * 100;
+  input.style.setProperty("--value", `${pct}%`);
 }
 
 function showToast(message) {
@@ -487,6 +558,8 @@ function publishPost() {
 
 function bindEvents() {
   document.addEventListener("click", (event) => {
+    addTapFeedback(event);
+
     const nav = event.target.closest("[data-nav]");
     if (nav) navigate(nav.dataset.nav);
 
@@ -500,9 +573,10 @@ function bindEvents() {
     const toggle = event.target.closest("[data-toggle]");
     if (toggle) {
       const key = toggle.dataset.toggle;
+      const controlName = toggle.closest(".control-card").querySelector("strong").textContent;
       state.controls[key] = !state.controls[key];
       renderControls();
-      showToast(`${toggle.closest(".control-card").querySelector("strong").textContent}已${state.controls[key] ? "开启" : "关闭"}`);
+      showToast(`${controlName}已${state.controls[key] ? "开启" : "关闭"}`);
     }
 
     const symptom = event.target.closest("[data-symptom]");
@@ -534,7 +608,9 @@ function bindEvents() {
   ["whiteRange", "redBlueRange"].forEach((id) => {
     const input = $(`#${id}`);
     const output = $(`#${id === "whiteRange" ? "whiteOutput" : "redBlueOutput"}`);
+    syncRangeFill(input);
     input.addEventListener("input", () => {
+      syncRangeFill(input);
       output.textContent = `${input.value}%`;
       $("#lightModeTag").textContent = Number($("#redBlueRange").value) > 65 ? "现蕾开花" : "营养生长";
     });
@@ -563,6 +639,7 @@ function clearLegacyCache() {
 function init() {
   clearLegacyCache();
   renderAll();
+  updateNavState(state.screen);
   bindEvents();
   setInterval(mutateMetrics, 6500);
 }
