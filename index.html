@@ -10,9 +10,9 @@
   <title>FloraMind 木本水培智能养护</title>
   <link rel="manifest" href="./manifest.json">
   <link rel="apple-touch-icon" href="./assets/floramind-icon-192.png">
-  <link rel="stylesheet" href="./styles.css?v=motion-polish-20260607a">
+  <link rel="stylesheet" href="./styles.css?v=numeric-charts-20260607a">
   <script>
-    window.__FLORAMIND_BUILD__ = "motion-polish-20260607a";
+    window.__FLORAMIND_BUILD__ = "numeric-charts-20260607a";
     if ("caches" in window) {
       caches.keys().then((keys) => keys.forEach((key) => caches.delete(key))).catch(() => {});
     }
@@ -120,7 +120,7 @@
               <button data-chart="do">DO</button>
             </div>
           </div>
-          <canvas id="trendChart" width="680" height="260" aria-label="根区趋势图"></canvas>
+          <canvas id="trendChart" width="680" height="320" aria-label="根区趋势图"></canvas>
         </div>
 
         <div class="panel">
@@ -223,7 +223,7 @@
             </div>
             <button class="text-button" data-action="addRecord">记录</button>
           </div>
-          <canvas id="growthChart" width="680" height="250" aria-label="生长曲线"></canvas>
+          <canvas id="growthChart" width="680" height="320" aria-label="生长曲线"></canvas>
         </div>
 
         <div class="panel">
@@ -314,6 +314,6 @@
   </dialog>
 
   <div class="toast" id="toast" role="status"></div>
-  <script src="./app.js?v=motion-polish-20260607a"></script>
+  <script src="./app.js?v=numeric-charts-20260607a"></script>
 </body>
 </html>
