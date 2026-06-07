@@ -1,1 +1,1 @@
-https://castillomubarak500-maker.github.io/floramind-pwa/
+https://castillomubarak500-maker.github.io/floramind-pwa/?release=text-demo-20260607a

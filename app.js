@@ -37,7 +37,7 @@ const state = {
       text: "今天根系颜色保持乳白，低流量循环后气泡附着明显减少。EC 先不继续上调。",
       likes: 28,
       comments: 6,
-      image: "./assets/floramind-device-3d-detail.png",
+      image: "",
       liked: false
     },
     {
@@ -185,7 +185,6 @@ function renderFeed() {
         </div>
       </div>
       <p>${post.text}</p>
-      ${post.image ? `<div class="post-media"><img src="${post.image}" alt="社区分享图片"></div>` : ""}
       <div class="post-actions">
         <button class="${post.liked ? "liked" : ""}" data-like="${index}"><i data-lucide="heart"></i>${post.likes}</button>
         <button data-comment="${index}"><i data-lucide="message-circle"></i>${post.comments}</button>
@@ -477,7 +476,7 @@ function publishPost() {
     text,
     likes: 0,
     comments: 0,
-    image: "./assets/floramind-device-3d-hero.png",
+    image: "",
     liked: false
   });
   input.value = "";
@@ -544,21 +543,27 @@ function bindEvents() {
   $("#plantPhoto").addEventListener("change", (event) => {
     const file = event.target.files?.[0];
     if (!file) return;
-    $("#photoPreview").src = URL.createObjectURL(file);
+    $("#photoStatus").innerHTML = '<i data-lucide="check-circle-2"></i>照片已选择';
+    createIcons();
     showToast("照片已载入，选择症状后可分析");
   });
 }
 
-function registerServiceWorker() {
+function clearLegacyCache() {
   if ("serviceWorker" in navigator) {
-    navigator.serviceWorker.register("./sw.js").catch(() => {});
+    navigator.serviceWorker.getRegistrations()
+      .then((registrations) => registrations.forEach((registration) => registration.unregister()))
+      .catch(() => {});
+  }
+  if ("caches" in window) {
+    caches.keys().then((keys) => keys.forEach((key) => caches.delete(key))).catch(() => {});
   }
 }
 
 function init() {
+  clearLegacyCache();
   renderAll();
   bindEvents();
-  registerServiceWorker();
   setInterval(mutateMetrics, 6500);
 }
 

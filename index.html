@@ -10,7 +10,18 @@
   <title>FloraMind 木本水培智能养护</title>
   <link rel="manifest" href="./manifest.json">
   <link rel="apple-touch-icon" href="./assets/floramind-icon-192.png">
-  <link rel="stylesheet" href="./styles.css?v=generated-device-20260607b">
+  <link rel="stylesheet" href="./styles.css?v=text-demo-20260607a">
+  <script>
+    window.__FLORAMIND_BUILD__ = "text-demo-20260607a";
+    if ("caches" in window) {
+      caches.keys().then((keys) => keys.forEach((key) => caches.delete(key))).catch(() => {});
+    }
+    if ("serviceWorker" in navigator) {
+      navigator.serviceWorker.getRegistrations()
+        .then((registrations) => registrations.forEach((registration) => registration.unregister()))
+        .catch(() => {});
+    }
+  </script>
   <script src="./vendor/lucide.min.js" defer></script>
 </head>
 <body>
@@ -23,8 +34,12 @@
           <p>木本植物智能水培系统</p>
         </div>
       </div>
-      <div class="context-card">
-        <img src="./assets/floramind-device-3d-hero.png" alt="维生基座 3D 虚拟装置">
+      <div class="context-card text-context-card">
+        <div class="context-device-summary" aria-label="维生基座设备摘要">
+          <span>桌面型水培主机</span>
+          <strong>3.6 L</strong>
+          <small>透明营养液舱 / 低流量循环 / 多传感器监测</small>
+        </div>
         <div>
           <strong>维生基座 V1.0</strong>
           <span>共生体 + 智能硬件 + 数字服务</span>
@@ -64,8 +79,17 @@
               <button class="secondary-action" data-nav="diagnosis"><i data-lucide="camera"></i>AI 诊断</button>
             </div>
           </div>
-          <div class="plant-card">
-            <img src="./assets/floramind-device-3d-hero.png" alt="维生基座设备与木本共生体 3D 渲染图">
+          <div class="plant-card text-device-card" aria-label="维生基座状态摘要">
+            <div class="device-module-list">
+              <span>木本共生体</span>
+              <strong>微型月季</strong>
+              <small>株高 17.2 cm · 新根 8.6 cm</small>
+            </div>
+            <div class="device-module-list">
+              <span>硬件联锁</span>
+              <strong>4 项在线</strong>
+              <small>液位 / 漏液 / 无流量 / 水温</small>
+            </div>
             <div class="growth-score">
               <strong id="growthScore">92</strong>
               <span>生命力</span>
@@ -113,8 +137,10 @@
 
       <section class="screen" data-screen="control" aria-label="设备控制">
         <div class="panel device-panel">
-          <div class="device-visual">
-            <img src="./assets/floramind-device-3d-detail.png" alt="维生基座透明水舱与传感器 3D 细节图">
+          <div class="device-visual text-device-visual" aria-label="维生基座硬件结构摘要">
+            <span>硬件结构</span>
+            <strong>水舱 + 泵路 + 传感器</strong>
+            <small>pH / EC / DO / 水温 / 液位</small>
           </div>
           <div>
             <span class="panel-kicker">远程操控</span>
@@ -221,8 +247,8 @@
           </div>
           <label class="upload-box" for="plantPhoto">
             <input id="plantPhoto" type="file" accept="image/*">
-            <img id="photoPreview" src="./assets/floramind-device-3d-detail.png" alt="植物诊断预览 3D 装置图">
-            <span><i data-lucide="camera"></i>更换照片</span>
+            <span class="upload-status" id="photoStatus"><i data-lucide="camera"></i>选择照片</span>
+            <small>未选择时使用下方症状数据进行演示分析</small>
           </label>
         </div>
 
@@ -288,6 +314,6 @@
   </dialog>
 
   <div class="toast" id="toast" role="status"></div>
-  <script src="./app.js?v=generated-device-20260607b"></script>
+  <script src="./app.js?v=text-demo-20260607a"></script>
 </body>
 </html>
