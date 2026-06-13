@@ -238,6 +238,10 @@ a {
   letter-spacing: 0;
 }
 
+.hero-copy h1 span {
+  display: block;
+}
+
 .hero-copy p {
   margin: 24px 0 0;
   max-width: 28em;
@@ -812,7 +816,9 @@ a {
   }
 
   .hero-copy h1 {
-    font-size: 40px;
+    max-width: 100%;
+    font-size: 34px;
+    overflow-wrap: anywhere;
   }
 
   .hero-copy p {
@@ -893,11 +899,39 @@ a {
   }
 
   .metric-table {
-    overflow-x: auto;
+    overflow: visible;
+    gap: 10px;
+    background: transparent;
+    border: 0;
+    box-shadow: none;
+    backdrop-filter: none;
+    -webkit-backdrop-filter: none;
   }
 
   .metric-table [role="row"] {
-    min-width: 620px;
+    min-width: 0;
+    grid-template-columns: 1fr 1fr;
+    min-height: 0;
+    row-gap: 8px;
+    padding: 14px;
+    border: 1px solid rgba(255,255,255,.88);
+    border-radius: 8px;
+    background: rgba(255,255,255,.74);
+    box-shadow: var(--shadow-soft);
+  }
+
+  .metric-table [role="row"]:first-child {
+    display: none;
+  }
+
+  .metric-table [role="row"] span:nth-child(3)::before {
+    content: "目标 ";
+    color: var(--subtle);
+  }
+
+  .metric-table [role="row"] span:nth-child(4)::before {
+    content: "单位 ";
+    color: var(--subtle);
   }
 
   .site-footer {

@@ -4,12 +4,12 @@
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <meta name="theme-color" content="#fbfffd">
-  <meta name="description" content="维生基座 FloraMind 桌面木本植物智能水培系统产品网页端，展示硬件结构、App 功能、关键指标与扫码体验入口。">
-  <title>维生基座 FloraMind 产品网页端</title>
+  <meta name="description" content="维生基座 FloraMind 桌面木本植物智能水培系统，面向木本植物根区监测、循环补氧、补光控制与长期养护记录。">
+  <title>维生基座 FloraMind 桌面水培养护系统</title>
   <link rel="icon" href="./assets/floramind-icon-192.png">
-  <link rel="stylesheet" href="./product.css?v=ui-web-20260613a">
+  <link rel="stylesheet" href="./product.css?v=product-copy-20260613b">
   <script>
-    window.__FLORAMIND_BUILD__ = "ui-web-20260613a";
+    window.__FLORAMIND_BUILD__ = "product-copy-20260613b";
   </script>
   <script src="./vendor/lucide.min.js" defer></script>
 </head>
@@ -22,7 +22,7 @@
         <small>维生基座</small>
       </span>
     </a>
-    <nav class="site-nav" aria-label="网页导航">
+    <nav class="site-nav" aria-label="产品导航">
       <a href="#system">系统</a>
       <a href="#hardware">硬件</a>
       <a href="#app">App</a>
@@ -37,16 +37,16 @@
   <main id="top">
     <section class="hero-section" aria-labelledby="hero-title">
       <div class="hero-copy reveal">
-        <h1 id="hero-title">维生基座 FloraMind</h1>
-        <p>桌面木本植物智能水培系统的网页端展示页，聚焦 App 入口、数据能力、远程控制和上线访问，只保留用户体验与产品介绍。</p>
+        <h1 id="hero-title"><span>维生基座</span><span>FloraMind</span></h1>
+        <p>面向月季等木本植物的桌面水培养护系统，围绕根区水质、循环补氧、补光与生长记录建立连续监测，让养护状态可观察、可判断、可追踪。</p>
         <div class="hero-actions">
           <a class="primary-action" href="./index.html?release=ui-web-20260613a">
             <i data-lucide="play"></i>
-            进入 App 演示
+            打开 App
           </a>
           <a class="secondary-action" href="#hardware">
             <i data-lucide="layers-3"></i>
-            查看模块
+            查看产品说明
           </a>
         </div>
         <dl class="hero-facts" aria-label="产品关键规格">
@@ -82,61 +82,61 @@
 
     <section class="section-band" id="system" aria-labelledby="system-title">
       <div class="section-heading reveal">
-        <h2 id="system-title">从根区到手机的闭环</h2>
-        <p>网页端用于讲清产品架构；移动端用于展示实时监测、控制和养护流程。两者共用同一套样机数据口径。</p>
+        <h2 id="system-title">产品检测说明</h2>
+        <p>维生基座重点监测根区环境是否稳定。检测结果不只看单个数值，而是结合水质、供氧、温度和液位安全状态判断植物是否适合继续生长。</p>
       </div>
       <div class="flow-rail">
         <article class="flow-step reveal">
+          <i data-lucide="activity"></i>
+          <h3>根区水质</h3>
+          <p>持续记录 pH、EC、溶解氧和水温，单位与目标区间同步显示，便于判断营养液是否需要调整。</p>
+        </article>
+        <article class="flow-step reveal">
+          <i data-lucide="shield-check"></i>
+          <h3>安全联锁</h3>
+          <p>低液位、漏液、无流量和水温异常优先触发本地保护，减少干转、缺氧和根系损伤风险。</p>
+        </article>
+        <article class="flow-step reveal">
           <i data-lucide="sprout"></i>
-          <h3>共生体</h3>
-          <p>以“我的月季”为演示对象，记录株高、新根长度、叶片状态和花苞变化。</p>
-        </article>
-        <article class="flow-step reveal">
-          <i data-lucide="cpu"></i>
-          <h3>维生基座</h3>
-          <p>ESP32-S3 连接泵路、补光、液位、漏液和传感器，本地联锁优先保障安全。</p>
-        </article>
-        <article class="flow-step reveal">
-          <i data-lucide="chart-line"></i>
-          <h3>FloraMind App</h3>
-          <p>显示 pH、EC、DO、水温和生长曲线，提供一键养护、AI 诊断与社区记录。</p>
+          <h3>生长表现</h3>
+          <p>以“我的月季”为记录对象，跟踪株高、新根长度、叶片状态和花苞变化，形成长期养护档案。</p>
         </article>
       </div>
     </section>
 
     <section class="section-band hardware-band" id="hardware" aria-labelledby="hardware-title">
       <div class="section-heading reveal">
-        <h2 id="hardware-title">硬件模块</h2>
-        <p>先满足桌面尺寸、可观察、可维护，再扩展正式产品外观和量产结构。</p>
+        <h2 id="hardware-title">产品介绍</h2>
+        <p>这是一套放在桌面上的木本植物水培底座。它把营养液舱、循环泵路、传感器和补光控制集中到一个小型系统中，适合教学展示、家庭养护和样机验证。</p>
       </div>
       <div class="module-grid">
         <article class="module-card reveal">
           <i data-lucide="droplets"></i>
           <h3>透明营养液舱</h3>
-          <p>观察水位、根系颜色和回水状态；低液位触发停泵保护。</p>
+          <p>便于观察水位、根系颜色和回水状态，养护者能直观看到根区是否清洁、是否缺水。</p>
         </article>
         <article class="module-card reveal">
           <i data-lucide="rotate-cw"></i>
           <h3>低流量循环</h3>
-          <p>持续弱循环减少根区缺氧，异常无流量时本地停泵并保留告警。</p>
+          <p>弱循环维持营养液流动，降低局部缺氧和沉积风险，同时避免过强水流扰动根系。</p>
         </article>
         <article class="module-card reveal">
           <i data-lucide="activity"></i>
           <h3>多参数传感</h3>
-          <p>pH、EC、DO、水温与液位形成根区关键指标，数据单位在 App 中明确展示。</p>
+          <p>pH、EC、溶解氧、水温与液位组成根区检测口径，帮助判断换液、补水和增氧时机。</p>
         </article>
         <article class="module-card reveal">
           <i data-lucide="sun-medium"></i>
           <h3>自适应补光</h3>
-          <p>白光与红蓝辅助分路控制，水温升高时自动降低热负荷。</p>
+          <p>根据植物阶段调节光照强度，水温偏高时优先降低热负荷，兼顾光照和根区稳定。</p>
         </article>
       </div>
     </section>
 
     <section class="section-band app-band" id="app" aria-labelledby="app-title">
       <div class="section-heading reveal">
-        <h2 id="app-title">App 功能齐全，先以网页 PWA 交付</h2>
-        <p>当前版本优先保证二维码可直接访问、中文界面完整、交互动效稳定；后续再按同一信息架构迁移 iOS 或安卓。</p>
+        <h2 id="app-title">未来发展规划</h2>
+        <p>当前重点是把检测、控制和记录流程跑通；下一阶段将围绕真实设备接入、数据校准和多植物管理继续完善，逐步从展示样机走向稳定产品。</p>
       </div>
       <div class="app-showcase">
         <div class="phone-outline reveal" aria-label="App 页面能力列表">
@@ -146,17 +146,17 @@
             <li><strong>监测</strong><span>pH 5.92、EC 1.42 mS/cm、DO 6.8 mg/L</span></li>
             <li><strong>控制</strong><span>循环泵、增氧泵、补光、本地联锁</span></li>
             <li><strong>档案</strong><span>株高 17.2 cm、新根 8.6 cm</span></li>
-            <li><strong>诊断</strong><span>症状选择与演示分析流程</span></li>
+            <li><strong>养护</strong><span>换液、补水、校准和阶段记录</span></li>
           </ul>
-          <a class="phone-cta" href="./index.html?release=ui-web-20260613a">打开移动端原型</a>
+          <a class="phone-cta" href="./index.html?release=ui-web-20260613a">打开移动端</a>
         </div>
         <div class="app-copy reveal">
-          <h3>交互已按移动端使用习惯重构</h3>
-          <p>底部导航、分段指标、按钮涟漪、页面切换、开关反馈和数据图表都由原生 HTML/CSS/JS 实现，部署到 HTTPS 静态站点即可运行。</p>
+          <h3>从样机验证到长期养护</h3>
+          <p>先用稳定的数据入口验证根区监测价值，再接入真实硬件和校准流程。后续可扩展到多植物档案、耗材提醒、远程告警和更多木本植物养护模型。</p>
           <div class="motion-list">
-            <span><i data-lucide="mouse-pointer-click"></i>点击反馈</span>
-            <span><i data-lucide="panels-top-left"></i>页面转场</span>
-            <span><i data-lucide="line-chart"></i>趋势图表</span>
+            <span><i data-lucide="flask-conical"></i>样机验证</span>
+            <span><i data-lucide="cpu"></i>设备接入</span>
+            <span><i data-lucide="leaf"></i>长期养护</span>
           </div>
         </div>
       </div>
@@ -164,8 +164,8 @@
 
     <section class="section-band" id="metrics" aria-labelledby="metrics-title">
       <div class="section-heading reveal">
-        <h2 id="metrics-title">关键指标采用准确数值与单位</h2>
-        <p>网页端保留产品说明，App 内趋势图和卡片用实际样机口径显示单位，避免“只有曲线没有数值”的问题。</p>
+        <h2 id="metrics-title">项目意义</h2>
+        <p>木本植物水培比普通草本水培更依赖根区稳定。把水质、供氧和生长表现长期记录下来，可以降低养护试错成本，也为教学展示和后续产品迭代留下可核查依据。</p>
       </div>
       <div class="metric-table reveal" role="table" aria-label="维生基座监测指标">
         <div role="row">
@@ -183,25 +183,25 @@
 
     <section class="scan-section" aria-labelledby="scan-title">
       <div class="scan-copy reveal">
-        <h2 id="scan-title">扫码直达 App 演示</h2>
-        <p>二维码指向 GitHub Pages HTTPS 正式域名，适合手机直接扫描体验移动端原型。</p>
+        <h2 id="scan-title">扫码查看移动端</h2>
+        <p>手机扫码即可查看 FloraMind 的监测、控制、档案和养护流程，适合路演展示、课堂讲解和样机介绍。</p>
         <a class="secondary-action" href="./index.html?release=ui-web-20260613a">
           <i data-lucide="external-link"></i>
           直接打开
         </a>
       </div>
       <div class="qr-card reveal">
-        <img src="./qr_floramind_https.png" alt="FloraMind App HTTPS 访问二维码">
-        <span>FloraMind PWA</span>
+        <img src="./qr_floramind_https.png" alt="FloraMind App 访问二维码">
+        <span>FloraMind App</span>
       </div>
     </section>
   </main>
 
   <footer class="site-footer">
-    <span>FloraMind · 维生基座产品网页端</span>
+    <span>FloraMind · 维生基座桌面水培养护系统</span>
     <a href="#top">返回顶部</a>
   </footer>
 
-  <script src="./product.js?v=ui-web-20260613a"></script>
+  <script src="./product.js?v=product-copy-20260613b"></script>
 </body>
 </html>
