@@ -166,6 +166,7 @@ function renderControls() {
       <button class="switch ${state.controls[control.key] ? "on" : ""}" data-toggle="${control.key}" aria-label="${control.title}"></button>
     </div>
   `).join("");
+  createIcons();
 }
 
 function renderSupplies() {

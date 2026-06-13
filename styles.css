@@ -1368,9 +1368,12 @@ output {
 
 .bottom-nav button {
   display: grid;
-  place-items: center;
-  gap: 4px;
-  min-height: 56px;
+  grid-template-rows: 22px 16px;
+  align-content: center;
+  justify-items: center;
+  gap: 5px;
+  min-height: 58px;
+  padding: 6px 0 10px;
   border-radius: 14px;
   color: var(--muted);
   background: transparent;
@@ -1382,20 +1385,28 @@ output {
   content: "";
   position: absolute;
   left: 50%;
-  bottom: 7px;
-  width: 18px;
-  height: 3px;
+  bottom: 3px;
+  z-index: 0;
+  width: 16px;
+  height: 2px;
   border-radius: 999px;
   background: linear-gradient(90deg, var(--mint), var(--aqua));
   opacity: 0;
   transform: translateX(-50%) scaleX(.4);
   transition: opacity .2s var(--ease-out), transform .2s var(--ease-out);
+  pointer-events: none;
 }
 
 .bottom-nav button svg {
   width: 20px;
   height: 20px;
   transition: transform .24s var(--ease-spring), color .2s var(--ease-out);
+}
+
+.bottom-nav button svg,
+.bottom-nav button span {
+  position: relative;
+  z-index: 1;
 }
 
 .bottom-nav button.active {
