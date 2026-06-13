@@ -1,4 +1,4 @@
-const CACHE_NAME = "floramind-no-cache-ui-fixes-20260613c";
+const CACHE_NAME = "floramind-no-cache-ui-nav-ripple-20260613d";
 
 self.addEventListener("install", (event) => {
   event.waitUntil(caches.keys().then((keys) => Promise.all(keys.map((key) => caches.delete(key)))));

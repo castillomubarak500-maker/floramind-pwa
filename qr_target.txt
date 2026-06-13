@@ -1,1 +1,1 @@
-https://castillomubarak500-maker.github.io/floramind-pwa/?release=ui-fixes-20260613c
+https://castillomubarak500-maker.github.io/floramind-pwa/?release=ui-nav-ripple-20260613d

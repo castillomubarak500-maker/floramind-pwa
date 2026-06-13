@@ -1404,9 +1404,14 @@ output {
 }
 
 .bottom-nav button svg,
-.bottom-nav button span {
+.bottom-nav button > span:not(.tap-ripple) {
   position: relative;
   z-index: 1;
+}
+
+.bottom-nav button > .tap-ripple {
+  position: absolute;
+  z-index: 3;
 }
 
 .bottom-nav button.active {
