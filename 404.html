@@ -1,0 +1,28 @@
+<!doctype html>
+<html lang="zh-CN">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta name="robots" content="noindex">
+  <title>Redirecting FloraMind</title>
+  <script>
+    (function () {
+      const path = window.location.pathname;
+      const parts = path.split("/").filter(Boolean);
+      const repoIndex = parts.indexOf("floramind-pwa");
+      const base = repoIndex >= 0 ? `/${parts.slice(0, repoIndex + 1).join("/")}/` : "/";
+      const lowerPath = path.toLowerCase();
+      const hash = window.location.hash || "";
+      const productTarget = `${base}product.html?release=product-route-20260613e`;
+      const appTarget = `${base}?release=ui-nav-ripple-20260613d`;
+      const target = lowerPath.includes("product") || lowerPath.includes("web")
+        ? productTarget
+        : appTarget;
+      window.location.replace(`${target}${hash}`);
+    }());
+  </script>
+</head>
+<body>
+  <p>Redirecting FloraMind. If it does not redirect, open <a href="/floramind-pwa/?release=ui-nav-ripple-20260613d">App</a> or <a href="/floramind-pwa/product.html?release=product-route-20260613e">Product page</a>.</p>
+</body>
+</html>

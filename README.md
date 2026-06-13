@@ -25,7 +25,7 @@ https://castillomubarak500-maker.github.io/floramind-pwa/
 产品网页端：
 
 ```text
-https://castillomubarak500-maker.github.io/floramind-pwa/product.html
+https://castillomubarak500-maker.github.io/floramind-pwa/product/
 ```
 
 对应二维码文件：
