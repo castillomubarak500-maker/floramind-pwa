@@ -22,6 +22,12 @@ http://127.0.0.1:8787/floramind_app/
 https://castillomubarak500-maker.github.io/floramind-pwa/
 ```
 
+产品网页端：
+
+```text
+https://castillomubarak500-maker.github.io/floramind-pwa/product.html
+```
+
 对应二维码文件：
 
 ```text

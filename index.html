@@ -5,14 +5,16 @@
   <meta name="viewport" content="width=device-width, initial-scale=1.0, viewport-fit=cover">
   <meta name="theme-color" content="#f7fbfa">
   <meta name="apple-mobile-web-app-capable" content="yes">
+  <meta name="mobile-web-app-capable" content="yes">
   <meta name="apple-mobile-web-app-status-bar-style" content="default">
   <meta name="apple-mobile-web-app-title" content="FloraMind">
-  <title>FloraMind 木本水培智能养护</title>
+  <title>FloraMind 维生基座智能养护</title>
+  <link rel="icon" href="./assets/floramind-icon-192.png">
   <link rel="manifest" href="./manifest.json">
   <link rel="apple-touch-icon" href="./assets/floramind-icon-192.png">
-  <link rel="stylesheet" href="./styles.css?v=numeric-charts-20260607a">
+  <link rel="stylesheet" href="./styles.css?v=ui-web-20260613a">
   <script>
-    window.__FLORAMIND_BUILD__ = "numeric-charts-20260607a";
+    window.__FLORAMIND_BUILD__ = "ui-web-20260613a";
     if ("caches" in window) {
       caches.keys().then((keys) => keys.forEach((key) => caches.delete(key))).catch(() => {});
     }
@@ -26,7 +28,7 @@
 </head>
 <body>
   <div class="app-shell">
-    <aside class="desktop-context" aria-hidden="true">
+    <aside class="desktop-context" aria-label="维生基座产品与演示入口">
       <div class="brand-lockup">
         <div class="brand-mark">F</div>
         <div>
@@ -50,6 +52,16 @@
         <span>远程控制</span>
         <span>生长档案</span>
         <span>社区互动</span>
+      </div>
+      <div class="context-actions">
+        <a class="context-link primary-link" href="./product.html?release=ui-web-20260613a">
+          <i data-lucide="monitor-smartphone"></i>
+          查看产品网页端
+        </a>
+        <a class="context-link" href="./qr_floramind_https.png">
+          <i data-lucide="qr-code"></i>
+          二维码入口
+        </a>
       </div>
     </aside>
 
@@ -314,6 +326,6 @@
   </dialog>
 
   <div class="toast" id="toast" role="status"></div>
-  <script src="./app.js?v=numeric-charts-20260607a"></script>
+  <script src="./app.js?v=ui-web-20260613a"></script>
 </body>
 </html>
