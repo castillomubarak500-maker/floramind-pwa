@@ -1,10 +1,10 @@
 /* Each release installs a complete, coherent app shell before it can become active. */
-const VERSION = "vision-v2-20260904-1";
+const VERSION = "vision-v2-20260904-2";
 const BASE = new URL("./", self.location.href);
 const PREFIX = "floramind:" + BASE.pathname + ":";
 const CACHE_NAME = PREFIX + VERSION;
 const FILES = [
-  "./", "index.html", "product/", "product/index.html", "404.html", "product.html", "web/index.html",
+  "./", "index.html", "product/", "product/index.html", "404.html", "product.html", "web/", "web/index.html",
   "css/tokens.css", "css/app.css", "css/product.css", "manifest.json",
   "js/icons.js", "js/config.js", "js/storage.js", "js/mock-data.js", "js/api-service.js", "js/core.js",
   "js/charts.js", "js/renderers.js", "js/ui.js", "js/router.js", "js/actions.js", "js/app.js", "js/product.js", "js/pwa.js",
@@ -42,7 +42,10 @@ self.addEventListener("fetch", event => {
     }
     try { return await fetch(request); }
     catch (error) {
-      if (request.mode === "navigate") return (await cache.match(new URL("404.html", BASE).href)) || Response.error();
+      if (request.mode === "navigate") {
+        const fallback = await cache.match(new URL("404.html", BASE).href);
+        if (fallback) return new Response(await fallback.text(), { status: 404, headers: { "Content-Type": "text/html; charset=utf-8" } });
+      }
       return Response.error();
     }
   })());

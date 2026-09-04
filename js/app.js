@@ -17,6 +17,8 @@ function renderConnection() {
   $("#connectionLabel").textContent = state.stale ? "连接中断 · 显示上次数据" : FloraAPI.isMock ? "演示模式 · 每 6.5 秒更新" : "设备已同步";
   $("#connectionBar").classList.toggle("is-offline", state.stale);
   $("#retrySync").hidden = !state.stale;
+  $("#whiteRange").disabled = !state.ready || state.controls.white == null || (state.stale && !FloraAPI.isMock);
+  $("#redBlueRange").disabled = !state.ready || state.controls.redBlue == null || (state.stale && !FloraAPI.isMock);
   $("#lastSync").textContent = state.updatedAt ? new Date(state.updatedAt).toLocaleTimeString("zh-CN", { hour12: false }) : "等待同步";
 }
 

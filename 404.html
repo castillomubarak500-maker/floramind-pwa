@@ -1,28 +1,2 @@
 <!doctype html>
-<html lang="zh-CN">
-<head>
-  <meta charset="UTF-8">
-  <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <meta name="robots" content="noindex">
-  <title>Redirecting FloraMind</title>
-  <script>
-    (function () {
-      const path = window.location.pathname;
-      const parts = path.split("/").filter(Boolean);
-      const repoIndex = parts.indexOf("floramind-pwa");
-      const base = repoIndex >= 0 ? `/${parts.slice(0, repoIndex + 1).join("/")}/` : "/";
-      const lowerPath = path.toLowerCase();
-      const hash = window.location.hash || "";
-      const productTarget = `${base}product.html?release=product-route-20260613e`;
-      const appTarget = `${base}?release=ui-nav-ripple-20260613d`;
-      const target = lowerPath.includes("product") || lowerPath.includes("web")
-        ? productTarget
-        : appTarget;
-      window.location.replace(`${target}${hash}`);
-    }());
-  </script>
-</head>
-<body>
-  <p>Redirecting FloraMind. If it does not redirect, open <a href="/floramind-pwa/?release=ui-nav-ripple-20260613d">App</a> or <a href="/floramind-pwa/product.html?release=product-route-20260613e">Product page</a>.</p>
-</body>
-</html>
+<html lang="zh-CN"><head><meta charset="UTF-8"><meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover"><meta name="robots" content="noindex"><meta name="theme-color" content="#f3f5ef"><title>页面未找到 · FloraMind</title><style>body{margin:0;padding:48px 24px;background:#f3f5ef;color:#173c2d;font-family:system-ui,sans-serif}main{max-width:420px;margin:12vh auto}p{color:#657469;line-height:1.8}h1{font-size:30px;font-weight:500}a{display:inline-block;padding:13px 18px;margin:8px 8px 0 0;background:#173c2d;color:white;border-radius:14px;text-decoration:none}small{letter-spacing:.14em}</style></head><body><main><small>FLORAMIND · 404</small><h1>这片叶子，暂未找到。</h1><p>链接可能已变更，或该页面尚未缓存。返回你的植物空间，继续今天的养护。</p><a id="homeLink" href="/floramind-pwa/">返回植物空间</a><a id="productLink" href="/floramind-pwa/product/">了解水蕴匠心</a></main><script>(function(){var base=location.pathname.indexOf('/floramind-pwa/')===0?'/floramind-pwa/':'/';document.getElementById('homeLink').href=base;document.getElementById('productLink').href=base+'product/';}());</script></body></html>

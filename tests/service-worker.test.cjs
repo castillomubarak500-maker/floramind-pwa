@@ -28,11 +28,12 @@ function setup() {
 }
 test('precache covers every real asset; app/product/query links work offline', async () => {
   const s = setup(); await s.lifecycle('install');
-  for (const route of ['', 'index.html', 'product/', 'product/index.html', '?release=old', 'js/app.js', 'qr/floramind-v2.png']) {
+  for (const route of ['', 'index.html', 'product/', 'product/index.html', 'web/', '?release=old', 'js/app.js', 'qr/floramind-v2.png']) {
     const response = await s.fetchEvent(base + route);
     assert.equal(response.status, 200, route);
     assert.ok((await response.arrayBuffer()).byteLength > 0, route);
   }
+  assert.equal((await s.fetchEvent(base + 'missing-page')).status, 404);
 });
 test('activation removes only old caches under this app scope', async () => {
   const s = setup(); await s.lifecycle('install'); await s.lifecycle('activate');

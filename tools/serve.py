@@ -15,8 +15,10 @@ class Handler(SimpleHTTPRequestHandler):
             self.send_response(302); self.send_header('Location', BASE); self.end_headers(); return None
         if not route.startswith(BASE):
             self.send_error(404); return None
-        self.path = '/' + self.path[len(BASE):]
         return super().send_head()
+    def translate_path(self, path):
+        if path.startswith(BASE): path = '/' + path[len(BASE):]
+        return super().translate_path(path)
 
 if __name__ == '__main__':
     parser = argparse.ArgumentParser()
