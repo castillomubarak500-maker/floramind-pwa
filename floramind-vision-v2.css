@@ -1,0 +1,30 @@
+/* FloraMind Vision V2 - progressive visual layer
+   Purpose: brand enhancement layer for the existing PWA.
+   Keep existing components compatible.
+*/
+
+:root {
+  --flora-life: #19b874;
+  --flora-glass: rgba(255,255,255,.68);
+  --flora-glow: rgba(80,220,170,.35);
+}
+
+.vision-v2-glow {
+  box-shadow: 0 0 36px var(--flora-glow), inset 0 1px 0 rgba(255,255,255,.9);
+}
+
+.life-pulse {
+  animation: floraPulse 2.8s ease-in-out infinite;
+}
+
+@keyframes floraPulse {
+  0%,100% { transform: scale(1); opacity: .9; }
+  50% { transform: scale(1.035); opacity: 1; }
+}
+
+.glass-orb {
+  backdrop-filter: blur(22px) saturate(1.4);
+  -webkit-backdrop-filter: blur(22px) saturate(1.4);
+  background: var(--flora-glass);
+  border: 1px solid rgba(255,255,255,.7);
+}
