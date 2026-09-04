@@ -3,7 +3,8 @@
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0, viewport-fit=cover">
-  <meta name="theme-color" content="#f7fbfa">
+  <meta name="theme-color" content="#f3f5ef">
+  <meta name="description" content="FloraMind 水蕴匠心：监测根区环境、控制维生基座、记录植物生长。木本植物智能水培系统演示。">
   <meta name="apple-mobile-web-app-capable" content="yes">
   <meta name="mobile-web-app-capable" content="yes">
   <meta name="apple-mobile-web-app-status-bar-style" content="default">
@@ -12,110 +13,64 @@
   <link rel="icon" href="./assets/floramind-icon-192.png">
   <link rel="manifest" href="./manifest.json">
   <link rel="apple-touch-icon" href="./assets/floramind-icon-192.png">
-  <link rel="stylesheet" href="./styles.css?v=ui-nav-ripple-20260613d">
-  <script>
-    window.__FLORAMIND_BUILD__ = "ui-nav-ripple-20260613d";
-    if ("caches" in window) {
-      caches.keys().then((keys) => keys.forEach((key) => caches.delete(key))).catch(() => {});
-    }
-    if ("serviceWorker" in navigator) {
-      navigator.serviceWorker.getRegistrations()
-        .then((registrations) => registrations.forEach((registration) => registration.unregister()))
-        .catch(() => {});
-    }
-  </script>
-  <script src="./vendor/lucide.min.js" defer></script>
+  <link rel="stylesheet" href="./css/tokens.css">
+  <link rel="stylesheet" href="./css/app.css">
+  <script src="./js/icons.js" defer></script>
 </head>
 <body>
+  <a class="skip-link" href="#appMain">跳到养护内容</a>
   <div class="app-shell">
-    <aside class="desktop-context" aria-label="维生基座产品与演示入口">
-      <div class="brand-lockup">
-        <div class="brand-mark">F</div>
-        <div>
-          <h1>FloraMind</h1>
-          <p>木本植物智能水培系统</p>
-        </div>
-      </div>
-      <div class="context-card text-context-card">
-        <div class="context-device-summary" aria-label="维生基座设备摘要">
-          <span>桌面型水培主机</span>
-          <strong>3.6 L</strong>
-          <small>透明营养液舱 / 低流量循环 / 多传感器监测</small>
-        </div>
-        <div>
-          <strong>维生基座 V1.0</strong>
-          <span>共生体 + 智能硬件 + 数字服务</span>
-        </div>
-      </div>
-      <div class="context-grid">
-        <span>AI 诊断</span>
-        <span>远程控制</span>
-        <span>生长档案</span>
-        <span>社区互动</span>
-      </div>
-      <div class="context-actions">
-        <a class="context-link primary-link" href="./product/?release=product-route-20260613e">
-          <i data-lucide="monitor-smartphone"></i>
-          查看产品网页端
-        </a>
-        <a class="context-link" href="./qr_floramind_https.png">
-          <i data-lucide="qr-code"></i>
-          二维码入口
-        </a>
-      </div>
+    <aside class="desktop-context" aria-label="FloraMind 产品与演示入口">
+      <div class="brand-lockup"><div class="brand-mark">f.</div><div><h1>FloraMind</h1><p>水蕴匠心 · 智能植物生命管理系统</p></div></div>
+      <p class="desktop-headline">让每一寸生长，<br>都有迹可循。</p>
+      <p class="desktop-description">一株木本植物，一座微型生命实验室。从看不见的根区变化，到看得见的每一片新叶。</p>
+      <div class="context-grid"><span>01 / 实时感知</span><span>02 / 智能养护</span><span>03 / 生长记录</span></div>
+      <div class="context-actions"><a class="primary-action" href="./product/">探索水蕴匠心 <i data-lucide="arrow-up-right"></i></a><a class="context-link" href="./qr/floramind-v2.png"><i data-lucide="qr-code"></i>手机体验</a></div>
+      <span class="desktop-caption">NATURE, WITH A LITTLE INTELLIGENCE.</span>
     </aside>
 
-    <main class="phone" aria-label="FloraMind 移动端应用">
+    <main class="phone" id="appMain" aria-label="FloraMind 移动端应用">
       <header class="topbar">
         <button class="icon-button" id="bindDeviceBtn" aria-label="绑定设备">
           <i data-lucide="scan-line"></i>
         </button>
         <div>
           <div class="eyebrow">FloraMind</div>
-          <h2 id="screenTitle">实时监测</h2>
+          <h2 id="screenTitle">生命</h2>
         </div>
         <button class="icon-button" id="notificationBtn" aria-label="查看告警">
           <i data-lucide="bell"></i>
           <span class="alert-dot" id="alertDot"></span>
         </button>
       </header>
+      <div class="connection-bar" id="connectionBar"><span id="connectionLabel">正在连接植物空间…</span><button class="text-button" id="retrySync" data-action="retrySync" hidden>重新连接</button></div>
 
       <section class="screen active" data-screen="dashboard" aria-label="实时监测">
         <div class="hero-panel">
-          <div class="hero-copy">
-            <span class="status-pill online"><i data-lucide="wifi"></i><span id="deviceStatus">在线</span></span>
-            <h3>我的月季</h3>
-            <p id="healthNarrative">根区环境稳定，建议继续保持低流量循环。</p>
-            <div class="hero-actions">
-              <button class="primary-action" data-action="quickCare"><i data-lucide="sparkles"></i>一键养护</button>
-              <button class="secondary-action" data-nav="diagnosis"><i data-lucide="camera"></i>AI 诊断</button>
-            </div>
+          <div class="hero-heading">
+            <span class="status-pill"><span id="deviceStatus">植物空间 · 载入中</span></span>
+            <h3>你的植物<br>正在生长</h3>
+            <p class="plant-label">我的月季 · 木本水培</p>
           </div>
-          <div class="plant-card text-device-card" aria-label="维生基座状态摘要">
-            <div class="device-module-list">
-              <span>木本共生体</span>
-              <strong>我的月季</strong>
-              <small>株高 17.2 cm · 新根 8.6 cm</small>
-            </div>
-            <div class="device-module-list">
-              <span>硬件联锁</span>
-              <strong>4 项在线</strong>
-              <small>液位 / 漏液 / 无流量 / 水温</small>
-            </div>
-            <div class="growth-score">
-              <strong id="growthScore">92</strong>
-              <span>生命力</span>
-            </div>
+          <img class="plant-art" src="./assets/plant-system.svg" width="300" height="440" alt="植物与透明水培基座概念示意">
+          <div class="life-gauge" id="lifeGauge" role="img" aria-label="生命指数等待同步">
+            <svg viewBox="0 0 104 104" aria-hidden="true"><circle class="ring-track" cx="52" cy="52" r="46"/><circle class="ring-value" id="lifeRing" cx="52" cy="52" r="46"/></svg>
+            <div><strong><b id="growthScore">—</b><small>%</small></strong><span>生命指数</span></div>
           </div>
+          <span class="sr-only" id="scoreNote">演示指数</span>
+          <div class="life-status"><span id="rootStatus">等待根系状态</span><span id="waterStatus">等待循环状态</span><span id="environmentStatus">等待环境数据</span></div>
+          <div class="ai-strip"><i data-lucide="sparkles"></i><div><small>AI 养护建议</small><strong id="aiAdvice">正在读取养护状态</strong></div></div>
+          <p class="sr-only" id="healthNarrative">正在读取根区环境</p>
+          <div class="hero-actions"><button class="primary-action" data-action="quickCare">开始养护 <i data-lucide="arrow-right"></i></button><button class="secondary-action" data-nav="diagnosis"><i data-lucide="scan-search"></i>AI 诊断</button></div>
         </div>
-
+        <div class="section-label"><h3>根区，尽在掌握</h3><span>ROOT ZONE</span></div>
         <div class="metric-grid" id="metricGrid"></div>
 
         <div class="panel compact-alert" id="alertPanel">
           <div>
             <span class="panel-kicker">本地联锁</span>
-            <h3 id="alertTitle">暂无紧急告警</h3>
-            <p id="alertText">低液位、漏液和无流量保护均正常。</p>
+            <h3 id="alertTitle">等待监测数据</h3>
+            <p id="alertText">设备保护状态需由实际硬件确认。</p>
           </div>
           <button class="text-button" data-nav="control">处理</button>
         </div>
@@ -123,7 +78,7 @@
         <div class="panel">
           <div class="section-head">
             <div>
-              <span class="panel-kicker">24 h 趋势</span>
+              <span class="panel-kicker" id="trendPeriod">24 h 趋势 · 演示窗口</span>
               <h3>根区关键指标</h3>
             </div>
             <div class="segmented" data-chart-tabs>
@@ -132,7 +87,7 @@
               <button data-chart="do">DO</button>
             </div>
           </div>
-          <canvas id="trendChart" width="680" height="320" aria-label="根区趋势图"></canvas>
+          <canvas role="img" id="trendChart" width="680" height="320" aria-label="根区趋势图"></canvas>
         </div>
 
         <div class="panel">
@@ -145,19 +100,17 @@
           </div>
           <div class="task-list" id="todayTasks"></div>
         </div>
+        <div class="app-links"><a href="./product/">关于水蕴匠心 ↗</a><a href="./qr/floramind-v2.png">分享二维码</a></div>
+        <div id="pwaNotice" class="pwa-notice" hidden><span id="pwaMessage"></span><button class="text-button" id="pwaButton">查看</button></div>
       </section>
 
-      <section class="screen" data-screen="control" aria-label="设备控制">
+      <section class="screen" data-screen="control" hidden aria-label="设备控制">
         <div class="panel device-panel">
-          <div class="device-visual text-device-visual" aria-label="维生基座硬件结构摘要">
-            <span>硬件结构</span>
-            <strong>水舱 + 泵路 + 传感器</strong>
-            <small>pH / EC / DO / 水温 / 液位</small>
-          </div>
+          <div class="device-visual"><img src="./assets/plant-system.svg" width="300" height="440" alt="维生基座概念结构" loading="lazy"></div>
           <div>
             <span class="panel-kicker">远程操控</span>
             <h3>维生基座 C-01</h3>
-            <p>ESP32-S3 已连接，最近同步 <span id="lastSync">刚刚</span>。</p>
+            <p>最近数据同步 <span id="lastSync">刚刚</span>。</p>
           </div>
         </div>
 
@@ -214,7 +167,7 @@
         </div>
       </section>
 
-      <section class="screen" data-screen="archive" aria-label="生长档案">
+      <section class="screen" data-screen="archive" hidden aria-label="生长档案">
         <div class="panel archive-hero">
           <div>
             <span class="panel-kicker">第 38 天</span>
@@ -235,7 +188,7 @@
             </div>
             <button class="text-button" data-action="addRecord">记录</button>
           </div>
-          <canvas id="growthChart" width="680" height="320" aria-label="生长曲线"></canvas>
+          <canvas role="img" id="growthChart" width="680" height="320" aria-label="生长曲线"></canvas>
         </div>
 
         <div class="panel">
@@ -250,17 +203,18 @@
         </div>
       </section>
 
-      <section class="screen" data-screen="diagnosis" aria-label="AI 诊断">
+      <section class="screen" data-screen="diagnosis" hidden aria-label="AI 诊断">
         <div class="panel diagnosis-card">
           <div>
             <span class="panel-kicker">AI 病虫害诊断</span>
             <h3>拍照或选择症状</h3>
-            <p>当前为演示诊断模型，正式版需接入真实训练数据与人工复核流程。</p>
+            <p>选择症状，结合根区数据生成养护建议。演示模式使用规则分析，不识别照片。</p>
           </div>
           <label class="upload-box" for="plantPhoto">
-            <input id="plantPhoto" type="file" accept="image/*">
+            <input id="plantPhoto" type="file" accept="image/jpeg,image/png,image/webp">
+            <img id="photoPreview" alt="已选择的植物照片" hidden>
             <span class="upload-status" id="photoStatus"><i data-lucide="camera"></i>选择照片</span>
-            <small>未选择时使用下方症状数据进行演示分析</small>
+            <small>JPG / PNG / WebP · 最大 5 MB · 演示照片不上传</small>
           </label>
         </div>
 
@@ -275,27 +229,14 @@
           <div class="chip-cloud" id="symptomChips"></div>
         </div>
 
-        <div class="panel result-panel" id="diagnosisResult">
-          <div class="result-head">
-            <div>
-              <span class="panel-kicker">诊断结果</span>
-              <h3>根区低氧风险</h3>
-            </div>
-            <strong>86%</strong>
-          </div>
-          <p>DO 近期低于 6 mg/L 且水温偏高，建议先增强增氧、降低补光热负荷，并复查气石堵塞情况。</p>
-          <div class="action-plan">
-            <button data-action="applyDiagnosis"><i data-lucide="fan"></i>开启强制增氧</button>
-            <button data-action="saveDiagnosis"><i data-lucide="file-check-2"></i>加入档案</button>
-          </div>
-        </div>
+        <div class="panel result-panel" id="diagnosisResult" aria-live="polite"><span class="panel-kicker">等待分析</span><h3>了解植物，从观察开始</h3><p>选择症状后点击「开始分析」，这里将显示建议与下一步操作。</p></div>
       </section>
 
-      <section class="screen" data-screen="community" aria-label="社区互动">
+      <section class="screen" data-screen="community" hidden aria-label="社区互动">
         <div class="composer panel">
           <div class="avatar">惜</div>
           <div class="composer-input">
-            <textarea id="postInput" rows="2" placeholder="记录今天的根系变化、花苞状态或养护心得"></textarea>
+            <textarea id="postInput" rows="3" maxlength="2000" aria-label="生长观察正文" placeholder="记录今天的根系变化、花苞状态或养护心得"></textarea>
             <div class="composer-actions">
               <button class="secondary-action" data-action="attachGrowth"><i data-lucide="chart-line"></i>附带数据</button>
               <button class="primary-action" data-action="publishPost"><i data-lucide="send"></i>发布</button>
@@ -303,20 +244,21 @@
           </div>
         </div>
 
+        <p class="local-note">演示社区 · 内容和互动保存在当前浏览器</p>
         <div class="feed" id="feed"></div>
       </section>
 
       <nav class="bottom-nav" aria-label="主导航">
-        <button class="active" data-nav="dashboard"><i data-lucide="gauge"></i><span>监测</span></button>
-        <button data-nav="control"><i data-lucide="sliders-horizontal"></i><span>控制</span></button>
-        <button data-nav="archive"><i data-lucide="sprout"></i><span>档案</span></button>
-        <button data-nav="diagnosis"><i data-lucide="scan-search"></i><span>诊断</span></button>
-        <button data-nav="community"><i data-lucide="message-circle"></i><span>社区</span></button>
+        <button class="active" data-nav="dashboard" aria-label="生命：实时监测" aria-current="page"><i data-lucide="sprout"></i><span>生命</span></button>
+        <button data-nav="archive" aria-label="生长：植物档案"><i data-lucide="leaf"></i><span>生长</span></button>
+        <button data-nav="control" aria-label="基座：设备控制"><i data-lucide="sliders-horizontal"></i><span>基座</span></button>
+        <button data-nav="diagnosis" aria-label="AI：植物诊断"><i data-lucide="sparkles"></i><span>AI</span></button>
+        <button data-nav="community" aria-label="共生：养护社区"><i data-lucide="heart"></i><span>共生</span></button>
       </nav>
     </main>
   </div>
 
-  <dialog id="modal">
+  <dialog id="modal" aria-labelledby="modalHeading" aria-modal="true">
     <div class="modal-card">
       <button class="icon-button modal-close" id="modalClose" aria-label="关闭">
         <i data-lucide="x"></i>
@@ -326,6 +268,17 @@
   </dialog>
 
   <div class="toast" id="toast" role="status"></div>
-  <script src="./app.js?v=ui-nav-ripple-20260613d"></script>
+    <script src="./js/config.js" defer></script>
+  <script src="./js/storage.js" defer></script>
+  <script src="./js/mock-data.js" defer></script>
+  <script src="./js/api-service.js" defer></script>
+  <script src="./js/core.js" defer></script>
+  <script src="./js/charts.js" defer></script>
+  <script src="./js/renderers.js" defer></script>
+  <script src="./js/ui.js" defer></script>
+  <script src="./js/router.js" defer></script>
+  <script src="./js/actions.js" defer></script>
+  <script src="./js/app.js" defer></script>
+  <noscript><p class="local-note">请启用 JavaScript 以使用实时监测与控制。<a href="./product/">了解水蕴匠心产品</a></p></noscript>
 </body>
 </html>

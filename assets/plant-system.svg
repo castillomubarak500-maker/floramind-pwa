@@ -1,0 +1,39 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 300 440" fill="none">
+  <title>木本植物与透明维生基座概念示意</title>
+  <defs>
+    <linearGradient id="vessel" x1="86" y1="294" x2="218" y2="399" gradientUnits="userSpaceOnUse"><stop stop-color="#fff" stop-opacity=".92"/><stop offset=".48" stop-color="#eff3e8" stop-opacity=".42"/><stop offset="1" stop-color="#fff" stop-opacity=".88"/></linearGradient>
+    <linearGradient id="leaf" x1="0" y1="0" x2="1" y2="1"><stop stop-color="#75955b"/><stop offset="1" stop-color="#2f5737"/></linearGradient>
+    <linearGradient id="water" x1="145" y1="341" x2="145" y2="402" gradientUnits="userSpaceOnUse"><stop stop-color="#b2c9b5" stop-opacity=".32"/><stop offset="1" stop-color="#a0b5a0" stop-opacity=".7"/></linearGradient>
+  </defs>
+  <ellipse cx="150" cy="418" rx="103" ry="12" fill="#819374" opacity=".14"/>
+  <path d="M76 303h148l-12 91q-2 19-62 19t-62-19z" fill="url(#vessel)" stroke="#fafcf3" stroke-width="3"/>
+  <path d="M82 344q67 15 137 0l-7 50q-1 15-62 15t-62-15z" fill="url(#water)"/>
+  <ellipse cx="150" cy="344" rx="67" ry="12" fill="#d3e1ce" opacity=".6" stroke="#9aae96" stroke-opacity=".25"/>
+  <g stroke="#e8e8ce" stroke-width="2.5" stroke-linecap="round">
+    <path d="M150 297q-7 39 2 62t-9 36M148 314q-24 28-17 56l-13 16M153 319q24 24 17 41t14 26M148 342q-14 17-5 30M155 350q14 17 3 37M135 354l-10 10M168 348l10 13"/>
+  </g>
+  <ellipse cx="150" cy="304" rx="75" ry="18" fill="#f9faf3" stroke="#cad4bf" stroke-width="2"/>
+  <ellipse cx="150" cy="300" rx="36" ry="10" fill="#536348"/>
+  <path d="M148 300q8-76 1-115t7-77" stroke="#756f45" stroke-width="6" stroke-linecap="round"/>
+  <g stroke="#64764a" stroke-width="3.3" stroke-linecap="round">
+    <path d="M150 253l-33-44M151 228l42-55M148 195l-38-45M152 162l34-48M154 131l-15-46"/>
+  </g>
+  <g fill="url(#leaf)">
+    <path d="M123 218Q64 222 50 172Q100 155 123 218Z"/>
+    <path d="M135 240Q91 267 69 240Q88 208 135 240Z"/>
+    <path d="M176 199Q188 143 241 150Q239 204 176 199Z"/>
+    <path d="M163 228Q206 192 233 220Q209 253 163 228Z"/>
+    <path d="M118 159Q61 161 67 111Q106 103 118 159Z"/>
+    <path d="M139 182Q132 132 174 121Q190 157 139 182Z"/>
+    <path d="M170 143Q178 98 215 96Q226 134 170 143Z"/>
+    <path d="M150 117Q100 100 114 57Q157 61 150 117Z"/>
+    <path d="M154 103Q147 47 182 27Q210 66 154 103Z"/>
+  </g>
+  <g stroke="#cad4a1" stroke-opacity=".4" stroke-width="1.2">
+    <path d="M120 216l-58-37M180 196l48-36M117 157l-40-36M172 141l34-37M150 113l-27-43M157 98l24-56M135 241l-53-1M166 228l53-8"/>
+  </g>
+  <path d="M88 394q62 24 124 0v11q-5 15-62 15t-62-15z" fill="#fafbf5" stroke="#d0d9c7"/>
+  <rect x="136" y="407" width="28" height="3" rx="1.5" fill="#669465"/>
+  <path d="M89 321l7 65" stroke="white" stroke-opacity=".85" stroke-width="4" stroke-linecap="round"/>
+  <circle cx="197" cy="362" r="3" stroke="#f4f8ed"/><circle cx="190" cy="377" r="2" stroke="#f4f8ed"/>
+</svg>

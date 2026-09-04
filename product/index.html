@@ -2,15 +2,63 @@
 <html lang="zh-CN">
 <head>
   <meta charset="UTF-8">
-  <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <meta name="robots" content="noindex">
-  <title>Opening FloraMind product page</title>
-  <meta http-equiv="refresh" content="0; url=../product.html?release=product-route-20260613e">
-  <script>
-    window.location.replace("../product.html?release=product-route-20260613e");
-  </script>
+  <meta name="viewport" content="width=device-width, initial-scale=1.0, viewport-fit=cover">
+  <meta name="theme-color" content="#f3f5ef">
+  <meta name="description" content="水蕴匠心 FloraMind 木本植物智能水培系统：AHA®驯化共生体、维生基座与数字养护服务，连接每一寸生长。">
+  <title>水蕴匠心 · FloraMind 木本植物智能水培系统</title>
+  <link rel="icon" href="../assets/floramind-icon-192.png">
+  <link rel="apple-touch-icon" href="../assets/floramind-icon-192.png">
+  <link rel="manifest" href="../manifest.json">
+  <link rel="stylesheet" href="../css/tokens.css">
+  <link rel="stylesheet" href="../css/product.css">
+  <script src="../js/icons.js" defer></script>
+  <script src="../js/config.js" defer></script>
+  <script src="../js/storage.js" defer></script>
+  <script src="../js/mock-data.js" defer></script>
+  <script src="../js/api-service.js" defer></script>
+  <script src="../js/product.js" defer></script>
 </head>
 <body>
-  <p>Opening FloraMind product page. If it does not redirect, open <a href="../product.html?release=product-route-20260613e">FloraMind product page</a>.</p>
+  <a class="skip-link" href="#main">跳到产品介绍</a>
+  <header class="site-header">
+    <a class="brand" href="../" aria-label="FloraMind 应用首页"><span class="brand-mark">f.</span><strong>FloraMind</strong></a>
+    <nav class="site-nav" aria-label="产品导航"><a href="#system">共生系统</a><a href="#hardware">维生基座</a><a href="#app">数字养护</a></nav>
+    <a class="header-action" href="../">体验 FloraMind <i data-lucide="arrow-up-right"></i></a>
+  </header>
+  <main id="main">
+    <section class="product-hero" aria-labelledby="hero-title">
+      <div class="hero-copy"><p class="eyebrow">NATURE, WITH A LITTLE INTELLIGENCE.</p>
+        <h1 id="hero-title">水蕴匠心<span>让生长，自有章法。</span></h1>
+        <p class="hero-description">木本植物智能水培系统</p>
+        <p class="hero-detail">把根区的细微变化，变成看得懂的养护语言。<br>从一滴水，到每一片新叶。</p>
+        <div class="hero-actions"><a class="primary-action" href="../">开始你的养护体验 <i data-lucide="arrow-right"></i></a><a class="secondary-action" href="#system">探索共生系统</a></div>
+        <div class="hero-caption"><span>木本共生体</span><span>智能硬件</span><span>数字生命档案</span></div>
+      </div>
+      <figure class="product-art"><div class="orbit orbit-one"></div><div class="orbit orbit-two"></div><img src="../assets/plant-system.svg" width="300" height="440" alt="木本植物、水培根系与透明维生基座概念示意"><div class="art-label label-top"><i data-lucide="leaf"></i><div><strong>看见生命</strong><span>新根、枝叶与长期生长</span></div></div><div class="art-label label-bottom"><i data-lucide="waves"></i><div><strong>感知根区</strong><span>每一个变化，都有回应</span></div></div><figcaption>维生基座 · 产品概念示意</figcaption></figure>
+    </section>
+    <section class="section-band" id="system" aria-labelledby="system-title">
+      <div class="section-heading"><span class="eyebrow">01 / THE LIVING SYSTEM</span><h2 id="system-title">一株植物，<br>一个完整的共生系统。</h2><p>驯化、环境与养护，三位一体。让植物的生命过程，拥有连续的照料。</p></div>
+      <div class="system-flow">
+        <article><span class="step-number">01</span><i data-lucide="sprout"></i><h3>AHA®驯化共生体</h3><p>围绕木本植物的根系适应与阶段观察，记录新根形成、叶色与生长表现。</p><span class="step-tag">生命的起点</span></article><span class="flow-arrow" aria-hidden="true">→</span>
+        <article><span class="step-number">02</span><i data-lucide="cpu"></i><h3>维生基座</h3><p>集成透明营养液舱、低流量循环、多参数传感与补光，让根区状态可观察。</p><span class="step-tag">稳定的环境</span></article><span class="flow-arrow" aria-hidden="true">→</span>
+        <article><span class="step-number">03</span><i data-lucide="smartphone"></i><h3>FloraMind APP</h3><p>实时监测、远程控制、AI 建议与生长档案，将每一天的观察连接起来。</p><span class="step-tag">持续的照料</span></article>
+      </div>
+    </section>
+    <section class="hardware-band" id="hardware" aria-labelledby="hardware-title">
+      <div class="hardware-copy"><span class="eyebrow">02 / THE LIFE SUPPORT BASE</span><h2 id="hardware-title">小小基座。<br>细致感知。</h2><p>ESP32-S3 连接传感与控制。低液位、漏液与无流量保护由设备本地执行，让关键保护留在现场。</p><div class="hardware-specs"><div><strong>3.6 <small>L</small></strong><span>原型营养液舱</span></div><div><strong>5 <small>项</small></strong><span>核心根区指标</span></div></div><p class="fine-print">规格来自现有样机方案，需以实物测试确认。当前线上体验使用演示数据。</p></div>
+      <div class="sensor-panel"><div class="sensor-head"><span><i data-lucide="activity"></i>根区实时感知</span><span class="small-tag" id="productDataStatus">正在载入</span></div><dl class="sensor-list">
+        <div><dt><span>01</span>pH 酸碱度</dt><dd data-product-metric="ph">—</dd></div>
+        <div><dt><span>02</span>EC 电导率</dt><dd><b data-product-metric="ec">—</b><small>mS/cm</small></dd></div>
+        <div><dt><span>03</span>DO 溶解氧</dt><dd><b data-product-metric="do">—</b><small>mg/L</small></dd></div>
+        <div><dt><span>04</span>营养液温度</dt><dd><b data-product-metric="waterTemp">—</b><small>℃</small></dd></div>
+        <div><dt><span>05</span>液位</dt><dd><b data-product-metric="level">—</b><small>%</small></dd></div>
+      </dl><a href="../#/control" class="sensor-link">进入维生基座 <i data-lucide="arrow-up-right"></i></a></div>
+    </section>
+    <section class="section-band" id="app" aria-labelledby="app-title"><div class="section-heading"><span class="eyebrow">03 / YOUR PLANT, CONNECTED</span><h2 id="app-title">把经验留下，<br>让养护更从容。</h2><p>从一次观察，到一份有迹可循的数字植物档案。</p></div>
+      <div class="service-grid"><a href="../#/dashboard"><i data-lucide="activity"></i><h3>实时监测</h3><p>读懂 pH、EC、DO 与环境趋势，先观察，再调整。</p><span>感知当下 ↗</span></a><a href="../#/diagnosis"><i data-lucide="sparkles"></i><h3>AI 养护建议</h3><p>选择根系与叶片症状，获得可操作的检查建议。</p><span>理解变化 ↗</span></a><a href="../#/archive"><i data-lucide="book-open"></i><h3>数字生长档案</h3><p>留存生长曲线、换液、校准与诊断记录。</p><span>记录生长 ↗</span></a><a href="../#/community"><i data-lucide="heart"></i><h3>共生社区</h3><p>记录养护心得，让你的每一次观察都有价值。</p><span>分享观察 ↗</span></a></div><p class="fine-print">当前为产品演示：诊断使用症状规则，档案与社区保存在本机浏览器。真实设备与 AI 服务通过独立接口接入。</p>
+    </section>
+    <section class="scan-section" aria-labelledby="scan-title"><div><span class="eyebrow">GROW SOMETHING GOOD.</span><h2 id="scan-title">你的植物，<br>下一刻就能遇见。</h2><p>打开微信扫一扫，进入 FloraMind。<br>无需下载，从一次养护开始。</p><a class="primary-action" href="../">直接进入应用 <i data-lucide="arrow-right"></i></a></div><a class="qr-card" href="../qr/floramind-v2.png" download><img src="../qr/floramind-v2.png" width="216" height="216" loading="lazy" alt="扫码打开 FloraMind 应用的二维码"><span>微信扫一扫 · 开始养护</span><small>点击下载高清二维码</small></a></section>
+  </main>
+  <footer class="site-footer"><a class="brand" href="../"><strong>FloraMind</strong><span>水蕴匠心</span></a><span>木本植物智能水培系统 · 产品演示</span><a href="#main">回到顶部 ↑</a></footer>
 </body>
 </html>
