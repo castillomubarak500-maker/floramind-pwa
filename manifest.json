@@ -1,13 +1,15 @@
 {
-  "name": "FloraMind 木本水培智能养护",
+  "name": "FloraMind",
   "short_name": "FloraMind",
   "description": "维生基座智能水培设备的实时监测、远程控制、AI诊断、生长档案和社区互动应用。",
-  "start_url": "./index.html",
-  "scope": "./",
+  "id": "/floramind-pwa/",
+  "start_url": "/floramind-pwa/",
+  "scope": "/floramind-pwa/",
   "display": "standalone",
   "orientation": "portrait",
-  "background_color": "#f7fbfa",
-  "theme_color": "#f7fbfa",
+  "lang": "zh-CN",
+  "background_color": "#f3f5ef",
+  "theme_color": "#f3f5ef",
   "icons": [
     {
       "src": "./assets/floramind-icon-192.png",
